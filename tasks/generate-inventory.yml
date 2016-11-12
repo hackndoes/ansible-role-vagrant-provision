@@ -1,0 +1,10 @@
+---
+#Generate inventory file for created hosts
+- name: "Generate global inventory file"
+  template:
+    src: inventory.j2
+    dest: "{{ inventory_output_dir }}/local"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_gid }}"
+  tags:
+  - conf

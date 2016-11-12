@@ -1,0 +1,4 @@
+---
+# tasks file for vagrant-init
+- include: create-machines.yml
+- include: generate-inventory.yml

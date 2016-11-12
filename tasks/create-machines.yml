@@ -1,0 +1,14 @@
+---
+# Will create machines on VirtualBox with private network
+- name: "Create / Verify {{ vagrant_dir }}"
+  file: name="{{ vagrant_dir }}" state=directory
+
+- name: "Generate Vagrant run-time configurations"
+  template:
+    src: "{{ item }}.j2"
+    dest: "{{ vagrant_dir }}/{{ item }}"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_gid }}"
+  with_items:
+    - servers.yml
+    - Vagrantfile

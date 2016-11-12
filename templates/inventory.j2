@@ -1,0 +1,21 @@
+# {{ ansible_managed }}
+# Do not edit manually unless you know what your doing ;) 
+
+{% for host in vagrant_hosts %}
+[{{ host.name }}]
+{{ host.name }} ansible_host="{{ host.ip }}" ansible_port=22 ansible_user="{{ host.user }}" ansible_ssh_private_key_file="{{ vagrant_dir }}/.vagrant/machines/{{ host.name }}/virtualbox/private_key"
+
+{% endfor %}
+
+{% for group in host_groups %}
+[{{ group }}]
+{% for host in vagrant_hosts %}
+{% for host_group in host.groups %}
+{% if host_group == group %}
+{{ host.name }}
+{% endif %}
+{% endfor %}
+{% endfor %}
+{# empty line between host groups #}
+
+{% endfor %}

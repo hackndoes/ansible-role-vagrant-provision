@@ -1,0 +1,11 @@
+
+---
+# {{ ansible_managed }}
+# Do not edit manually unless you know what your doing ;)
+
+{% for host in vagrant_hosts %}
+- name: {{ host.name }}
+  box: {{ host.box }}
+  ram: {{ host.ram }}
+  ip:  {{ host.ip }}
+{% endfor %}
