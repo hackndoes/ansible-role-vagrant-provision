@@ -4,4 +4,4 @@
     inventory_output_dir: "."
   remote_user: root
   roles:
-    - vagrant-provision
+    - ansible-role-vagrant-provision
