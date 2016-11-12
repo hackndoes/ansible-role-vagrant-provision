@@ -1,0 +1,4 @@
+---
+- name: Start All Created VMs
+  command: vagrant up chdir="{{ vagrant_dir }}"
+  with_items: "{{ vagrant_hosts }}"
