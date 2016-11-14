@@ -2,3 +2,8 @@
 - name: Start All Created VMs
   command: vagrant up chdir="{{ vagrant_dir }}"
   with_items: "{{ vagrant_hosts }}"
+
+- name: Wait For All VMs to be available for ansible connection
+  wait_for: host={{ item.ip }} port=22
+  with_items: "{{ vagrant_hosts }}"
+
