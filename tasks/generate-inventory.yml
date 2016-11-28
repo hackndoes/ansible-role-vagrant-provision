@@ -3,7 +3,7 @@
 - name: "Generate global inventory file"
   template:
     src: inventory.j2
-    dest: "{{ inventory_output_dir }}/inventory"
+    dest: "{{ inventory_output_dir }}/hosts"
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_gid }}"
 
