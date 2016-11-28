@@ -2,6 +2,8 @@
 # Will create machines on VirtualBox with private network
 - name: "Create / Verify {{ vagrant_dir }}"
   file: name="{{ vagrant_dir }}" state=directory
+  tags:
+    - vagrantconfig
 
 - name: "Generate Vagrant run-time configurations"
   template:
@@ -12,3 +14,5 @@
   with_items:
     - servers.yml
     - Vagrantfile
+  tags:
+    - vagrantconfig

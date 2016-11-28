@@ -8,6 +8,7 @@
     group: "{{ ansible_user_gid }}"
   tags:
     - inventoryfile
+    - vagrantconfig
 
 - name: "Add Hosts Ansible inventory"
   add_host:
