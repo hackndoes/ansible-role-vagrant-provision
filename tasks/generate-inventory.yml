@@ -6,6 +6,8 @@
     dest: "{{ inventory_output_dir }}/hosts"
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_gid }}"
+  tags:
+    - inventoryfile
 
 - name: "Add Hosts Ansible inventory"
   add_host:
