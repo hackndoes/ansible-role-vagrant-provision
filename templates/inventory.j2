@@ -17,5 +17,9 @@
 {% endfor %}
 {% endfor %}
 {# empty line between host groups #}
+{% endfor %}
 
+[local:children]
+{% for group in type_groups %}
+{{ group }}
 {% endfor %}
