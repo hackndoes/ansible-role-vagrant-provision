@@ -7,11 +7,11 @@
 
 {% endfor %}
 
-{% for group in host_groups %}
+{% for group in type_groups %}
 [{{ group }}]
 {% for host in vagrant_hosts %}
-{% for host_group in host.groups %}
-{% if host_group == group %}
+{% for type in host.types %}
+{% if type == group %}
 {{ host.name }}
 {% endif %}
 {% endfor %}
