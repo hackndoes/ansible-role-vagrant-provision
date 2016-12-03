@@ -12,8 +12,8 @@
 
 - name: "Generate dynamic inventory file"
   template:
-    src: inventory.py.j2
-    dest: "{{ inventory_output_dir }}/inventory.py"
+    src: vagrant.py.j2
+    dest: "{{ inventory_output_dir }}/vagrant.py"
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_gid }}"
 
