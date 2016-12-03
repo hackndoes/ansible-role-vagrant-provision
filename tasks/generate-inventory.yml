@@ -16,6 +16,7 @@
     dest: "{{ inventory_output_dir }}/vagrant.py"
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_gid }}"
+    mode: 0755
 
 - name: "Add Hosts Ansible inventory"
   add_host:
