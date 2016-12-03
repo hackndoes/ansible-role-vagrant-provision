@@ -21,16 +21,14 @@
   add_host:
     # ansible args
     ansible_host: "{{ item.ip }}"
-    ansible_user: "{{ item.user }}"
     # extra args
     name: "{{ item.name }}"
-    user: "{{ item.user }}"
     box: "{{ item.box }}"
     ip: "{{ item.ip }}"
     ram: "{{ item.ram }}"
     ansible_ssh_private_key_file: "{{ vagrant_dir }}/.vagrant/machines/{{ item.name }}/virtualbox/private_key"
     # hot groups (item.groups is a list and needs to 
     # concatenate to a string sor add_hosts can split it back toa list)
-    groups: "{{ item.types|join }}"
+    types: "{{ item.types|join }}"
   with_items:
     - "{{ vagrant_hosts }}"
