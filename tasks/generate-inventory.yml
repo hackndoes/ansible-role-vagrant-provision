@@ -1,14 +1,14 @@
 ---
 #Generate inventory file for created hosts
+- name: "Create / Verify {{ vagrant_dir }}"
+  file: name="{{ vagrant_dir }}" state=directory
+
 - name: "Generate global inventory file"
   template:
     src: inventory.j2
     dest: "{{ inventory_output_dir }}/hosts"
     owner: "{{ ansible_user_id }}"
     group: "{{ ansible_user_gid }}"
-  tags:
-    - inventoryfile
-    - vagrantconfig
 
 - name: "Generate dynamic inventory file"
   template:
