@@ -24,6 +24,18 @@ def list_running_hosts():
     return hosts
 
 def get_host_details(host):
+    host_details = _get_host_details(host)
+    servers = None
+    with open("{{ vagrant_dir }}", "r") as stream:
+        try:
+            servers = yaml.load(stream)
+        except yaml.YAMLError as err:
+            raise err
+    server = [s for s in servers if s['name'] == host].pop()
+    host_details['ansible_host'] = server['ip']
+    return host_details
+
+def _get_host_details(host):
     cmd = "vagrant ssh-config {}".format(host)
     p = subprocess.Popen(cmd.split(), cwd="{{ vagrant_dir }}", stdout=subprocess.PIPE)
     config = paramiko.SSHConfig()
