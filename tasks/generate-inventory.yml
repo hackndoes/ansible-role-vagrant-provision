@@ -1,8 +1,5 @@
 ---
 #Generate inventory file for created hosts
-- name: "Create / Verify {{ vagrant_dir }}"
-  file: name="{{ vagrant_dir }}" state=directory
-
 - name: "Generate global inventory file"
   template:
     src: inventory.j2
